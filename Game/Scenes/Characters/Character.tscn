@@ -23,3 +23,8 @@ shape = SubResource( 2 )
 [node name="Forward" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63752, 1 )
 
+[node name="CanFire" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="CanFire" to="." method="_on_CanFire_timeout"]
