@@ -113,3 +113,6 @@ func animate():
 func _input(event):
 	if Input.is_action_pressed("fire"):
 		fire()
+
+func hurt():
+	pass

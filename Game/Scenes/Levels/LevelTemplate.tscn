@@ -31,5 +31,7 @@ shadow_enabled = true
 editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0, 0 )
 
+[node name="CollisionWalls" type="Node" parent="."]
+
 
 [editable path="Player"]

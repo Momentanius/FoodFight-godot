@@ -11,3 +11,6 @@ func _physics_process(delta):
 		can_fire = false
 		$CanFire.start()
 		pass
+
+func hurt():
+	pass
