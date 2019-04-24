@@ -13,6 +13,10 @@ const DECCEL = 15
 const JUMP_SPEED = 15
 const GRAVITY = -45
 
+#ammo variables
+export var max_ammo = 5
+var ammo = 0
+var can_refill = false
 
 # animation constants
 const BLEND_MINIMUM = 0.125
@@ -116,3 +120,36 @@ func _input(event):
 
 func hurt():
 	pass
+
+func try_to_fire():
+	if can_fire and ammo > 0:
+		fire()
+		can_fire = false
+		$CanFire.start()
+		ammo = ammo-1
+		update_GUI()
+
+func _on_RefillTimer_timeout():
+	ammo = ammo + 1
+	update_GUI()
+	if check_ammo():
+		$RefillTimer.start()
+
+func check_ammo():
+	if ammo < max_ammo:
+		return true
+
+func RefillArea_entered():
+	if check_ammo():
+		$RefillTimer.start()
+		can_refill = true
+		$Harp.play()
+
+func RefillArea_exited():
+	$RefillTimer.stop()
+	can_refill = false
+	$Harp.stop()
+	
+
+func update_GUI(): #move to group call when you make a gui
+	get_node("../GUI/Label").text = str(ammo)
