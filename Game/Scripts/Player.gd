@@ -19,12 +19,16 @@ var ammo = 0
 var can_refill = false
 
 # animation constants
-const BLEND_MINIMUM = 0.125
+const BLEND_MINIMUM = 0.1
 const RUN_BLEND_AMOUNT = 0.1
 const IDLE_BLEND_AMOUNT = 0.25
+const RELOAD_BLEND_AMOUNT = 0.1
+const ACTION_RESET_RATE = 0.05
 
 #animation variables
 var move_state = 0 #0 is idle, 1 is run
+var action_state = 0 # -1 is throw, 0 is idle/move, +1 is reload
+
 
 func _process(delta):
 	move(delta)
@@ -112,7 +116,14 @@ func animate():
 	
 	move_state = clamp(move_state, 0, 1)
 	
+	if can_refill:
+		action_state += RELOAD_BLEND_AMOUNT
+	
+	action_state = clamp(action_state, -1, 1)
+	action_state = lerp(action_state, 0, ACTION_RESET_RATE)
+	
 	animate.blend2_node_set_amount("Move", move_state)
+	animate.blend3_node_set_amount("action", action_state)
 
 func _input(event):
 	if Input.is_action_pressed("fire"):
@@ -128,6 +139,7 @@ func try_to_fire():
 		$CanFire.start()
 		ammo = ammo-1
 		update_GUI()
+		action_state = -1
 
 func _on_RefillTimer_timeout():
 	ammo = ammo + 1

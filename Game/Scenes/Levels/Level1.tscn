@@ -38,7 +38,7 @@ tracks/0/keys = {
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 8.04884, 5.21774, 1 )
 
-[node name="LevelTemplate" index="0" instance=ExtResource( 1 )]
+[node name="LevelTemplate" instance=ExtResource( 1 )]
 
 [node name="PauseMenu" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -198,20 +198,6 @@ transform = Transform( 0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871557,
 [node name="Robot" parent="Robots" index="0" instance=ExtResource( 14 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67942, 0, -5.68116 )
-
-[node name="RobotArmature" parent="Robots/Robot" index="3"]
-bones/1/bound_children = [ NodePath("BoneAttachment002") ]
-bones/2/bound_children = [ NodePath("BoneAttachment011") ]
-bones/7/bound_children = [ NodePath("BoneAttachment004") ]
-bones/8/bound_children = [ NodePath("BoneAttachment009") ]
-bones/9/bound_children = [ NodePath("BoneAttachment") ]
-bones/22/bound_children = [ NodePath("BoneAttachment010") ]
-bones/23/bound_children = [ NodePath("BoneAttachment001") ]
-bones/37/bound_children = [ NodePath("BoneAttachment005") ]
-bones/38/bound_children = [ NodePath("BoneAttachment007") ]
-bones/39/bound_children = [ NodePath("BoneAttachment003") ]
-bones/41/bound_children = [ NodePath("BoneAttachment006") ]
-bones/42/bound_children = [ NodePath("BoneAttachment008") ]
 
 [node name="PositionAnimation" parent="Robots/Robot" index="5"]
 autoplay = "Movement"

@@ -21,20 +21,32 @@ visible = false
 transform = Transform( 0.25, 0, 0, 0, -1.09278e-008, -0.25, 0, 0.25, -1.09278e-008, 0, 0, 0 )
 
 [node name="AnimationTreePlayer" parent="Armature" index="2"]
+active = false
 data = {
-"active": true,
-"connections": [ "move", "out", 0, "idleanim", "move", 0, "runanim", "move", 1 ],
+"active": false,
+"connections": [ "throwanim", "action", 0, "move", "action", 1, "reloadanim", "action", 2, "action", "out", 0, "idleanim", "move", 0, "runanim", "move", 1 ],
 "master": NodePath("../AnimationPlayer"),
 "nodes": [ {
+"blend": 0.35,
+"id": "action",
+"position": Vector2( 560, 64 ),
+"type": "blend3"
+}, {
 "id": "out",
-"position": Vector2( 587, 131 ),
+"position": Vector2( 729, 69 ),
 "type": "output"
 }, {
-"blend": 0.4,
+"blend": 0.77,
 "filter": [  ],
 "id": "move",
-"position": Vector2( 297, 26 ),
+"position": Vector2( 251, 94 ),
 "type": "blend2"
+}, {
+"filter": [  ],
+"from": "Run",
+"id": "runanim",
+"position": Vector2( 61, 177 ),
+"type": "animation"
 }, {
 "filter": [  ],
 "from": "Idle",
@@ -43,9 +55,15 @@ data = {
 "type": "animation"
 }, {
 "filter": [  ],
-"from": "Run",
-"id": "runanim",
-"position": Vector2( 61, 177 ),
+"from": "Working",
+"id": "reloadanim",
+"position": Vector2( 369, 179 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "Punch",
+"id": "throwanim",
+"position": Vector2( 348, 13 ),
 "type": "animation"
 } ]
 }
