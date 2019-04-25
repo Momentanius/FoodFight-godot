@@ -29,6 +29,8 @@ const ACTION_RESET_RATE = 0.05
 var move_state = 0 #0 is idle, 1 is run
 var action_state = 0 # -1 is throw, 0 is idle/move, +1 is reload
 
+func _ready():
+	character_type = CHARACTER_TYPES.player
 
 func _process(delta):
 	move(delta)
@@ -129,8 +131,6 @@ func _input(event):
 	if Input.is_action_pressed("fire"):
 		fire()
 
-func hurt():
-	pass
 
 func try_to_fire():
 	if can_fire and ammo > 0:
